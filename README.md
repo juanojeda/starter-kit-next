@@ -15,6 +15,7 @@ Refer to the respective docs for more information
 - [Tailwind CSS](https://tailwindcss.com) - CSS framework
 - [tRPC](https://trpc.io) - type safe api endpoints
 - [ESLint](https://eslint.org/) - linter
+- [Prettier](https://prettier.io/) - An opinionated code formatter
 - [Typescript](https://www.typescriptlang.org/) - programming language
 - [Jest](https://jestjs.io/) - testing framework
 - [Vercel](https://vercel.com/docs) - deployment platform
