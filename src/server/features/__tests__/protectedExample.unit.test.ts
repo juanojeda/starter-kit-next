@@ -5,10 +5,10 @@ import { protectedExample } from "~/server/features/protectedExample"
 
 test("Should throw error for unauthed users", async () => {
   const caller = createTRPCRouter({
-    testEndPoint: protectedExample,
+    ...protectedExample,
   }).createCaller({ session: null })
 
-  await expect(caller.testEndPoint()).rejects.toThrow("UNAUTHORIZED")
+  await expect(caller.protectedExample()).rejects.toThrow("UNAUTHORIZED")
 })
 
 test("Should return message for valid user", async () => {
@@ -17,10 +17,10 @@ test("Should return message for valid user", async () => {
     user: { id: "testUserId" },
   }
   const caller = createTRPCRouter({
-    testEndpoint: protectedExample,
+    ...protectedExample,
   }).createCaller({ session: VALID_SESSION })
 
-  expect(await caller.testEndpoint()).toEqual(
+  expect(await caller.protectedExample()).toEqual(
     "Hello testUserId you can now see this secret message!"
   )
 })

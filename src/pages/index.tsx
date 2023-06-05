@@ -4,7 +4,7 @@ import { api } from "~/server/api"
 
 const Home: NextPage = () => {
   const hello = api.queryExample.useQuery({ text: "from tRPC" })
-  const secret = api.protectedRouteExample.useQuery()
+  const secret = api.protectedExample.useQuery()
   const mutationExample = api.mutationExample.useMutation()
 
   const handleButton = () => {

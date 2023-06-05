@@ -7,8 +7,8 @@ test("Should return message", async () => {
     text: "Just a message to show how the mutation endpoint works",
   }
   const caller = createTRPCRouter({
-    testEndpoint: mutationExample,
+    ...mutationExample,
   }).createCaller({ session: null })
 
-  expect(await caller.testEndpoint(input)).toEqual({ greeting: input.text })
+  expect(await caller.mutationExample(input)).toEqual({ greeting: input.text })
 })

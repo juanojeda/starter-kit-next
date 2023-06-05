@@ -4,9 +4,9 @@ import { createTRPCRouter } from "~/server/middleware/trpc"
 
 test("Should return message", async () => {
   const input = { text: "Ola" }
-  const caller = createTRPCRouter({ testEndpoint: queryExample }).createCaller({
+  const caller = createTRPCRouter({ ...queryExample }).createCaller({
     session: null,
   })
 
-  expect(await caller.testEndpoint(input)).toEqual({ greeting: "Hello Ola" })
+  expect(await caller.queryExample(input)).toEqual({ greeting: "Hello Ola" })
 })
