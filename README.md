@@ -20,7 +20,7 @@ Refer to the respective docs for more information
 - [Jest](https://jestjs.io/) - testing framework
 - [Vercel](https://vercel.com/docs) - deployment platform
 - [github actions](https://docs.github.com/en/actions) - CI pipeline
-- [Mountebank](http://www.mbtest.org/) - used to fake external services to enable integration testing
+- [Mountebank](http://www.mbtest.org/) - used to fake 3rd party services to enable integrations and air gaped local dev
 - [husky](https://typicode.github.io/husky/) - git hooks
 
 ## Getting Started
@@ -58,7 +58,7 @@ You will need to get access to the following accounts
 ### Running tests
 - unit tests: ```npm run unit:test```
 - integration tests: ```npm run integration:test```
-    - integrations are faked by mountebank
+    - 3rd party integrations are faked by mountebank
 
 ### Manual testing
 
