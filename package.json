@@ -10,7 +10,8 @@
     "unit:test": "jest unit",
     "integration:test": "npm run startmb & jest integration && mb stop",
     "startmb": "mb --configfile ./mountebank/exampleImposters.json --loglevel debug",
-    "stopmb": "mb stop"
+    "stopmb": "mb stop",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.3.1",
