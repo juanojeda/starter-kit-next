@@ -1,8 +1,10 @@
 import { type NextPage } from "next"
 import Head from "next/head"
 import { api } from "~/server/api"
+import { useSession } from "next-auth/react"
 
 const Home: NextPage = () => {
+  const { data: sessionData } = useSession()
   const hello = api.queryExample.useQuery({ text: "from tRPC" })
   const secret = api.protectedExample.useQuery()
   const mutationExample = api.mutationExample.useMutation()
@@ -28,7 +30,12 @@ const Home: NextPage = () => {
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
             </p>
             <p className="text-2xl text-white">
-              {secret.isSuccess ? secret.data : "You are unauthenticated"}
+              {secret.isSuccess ? secret.data : ""}
+            </p>
+            <p className="text-2xl text-white">
+              {sessionData?.user
+                ? `Welcome ${sessionData.user.id}`
+                : "You are unauthenticated"}
             </p>
             <p className="text-2xl text-white">
               {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
