@@ -36,24 +36,25 @@ nvm install --lts
 ### Accounts
 You will need to get access to the following accounts
 * Github repo - <git repot>
-* AWS sso login - <sso login url>
+* Vercel - <vercel url>
+
 
 ### Deployments
 
-* QA - <add>
-* DEMO - <add>
-* Prod - <add>
+* QA - <add url>
+* DEMO - <add url>
+* Prod - <add url>
 
 ### Local dev setup
 
 1. Copy environment variables and install dependencies
 
-    ```bash
-    cp .env.example .env && npm install
-    ```
+```bash
+cp .env.example .env && npm install
+```
    
 2. Start the application
-   ```npm run dev```
+```npm run dev```
 
 ### Running tests
 - unit tests: ```npm run unit:test```
@@ -63,7 +64,7 @@ You will need to get access to the following accounts
 ### Manual testing
 
 Accounts used for testing
-* role login - username:password
+* <role/auth type> login - username:password
 
 ## Git and CI/CD
 
