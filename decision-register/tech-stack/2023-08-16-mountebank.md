@@ -1,24 +1,19 @@
-# Decision record template by Michael Nygard
-
-This is the template in [Documenting architecture decisions - Michael Nygard](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions).
-You can use [adr-tools](https://github.com/npryce/adr-tools) for managing the ADR files.
-
-In each ADR file, write these sections:
-
-# Title
+# Mountebank as a developer environment tool for mocking third party services
 
 ## Status
 
-What is the status, such as proposed, accepted, rejected, deprecated, superseded, etc.?
+Accepted
 
 ## Context
 
-What is the issue that we're seeing that is motivating this decision or change?
-
+ modern apps often depend on third party services for enhanced functionality. This creates problems when testing your application as you need it to connect to the third party service to run the full app and many third parties do not provide a solution for you.
 ## Decision
 
-What is the change that we're proposing and/or doing?
+- We will use Mountebank in the developer environment in order to mock third party services
 
 ## Consequences
 
-What becomes easier or more difficult to do because of this change?
+- Mountebank is a quick light weight way to mock these services so you can still run and test the application independently.
+- Mountebank is open source, free and battle tested
+- We will need to maintain a config that mocks our services
+- We will need to use configured urls (env consts, for instance) that divert traffic to the Mountebank server in local development
