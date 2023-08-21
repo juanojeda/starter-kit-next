@@ -1,9 +1,26 @@
-# <NAME>
+# Starter Kit for Startups
 
-high level description
-sub domain description
+This is the Everest Starter kit for startups targetting solutions in web technologies.
 
-# Check out the latest docs
+Before using this kit, please ensure that the tech stack will meet your client's needs. You can review the tech stack and reasons for such decisions in the [ADR folder](/decision-register/tech-stack).
+
+If this starter kit meets your needs, then proceed...
+
+## Instructions for using this kit
+1. Clone this repo
+2. Delete the `.git` folder, and initiate it under your own project's git repository.
+3. Follow the [Getting Started](#getting-started) instructions.
+4. Fill in the blanks below this line, then delete the line and everything above it.
+
+-------
+
+# [Fill in Your Project Name]
+
+*[high level description]*
+
+*[sub domain description]*
+
+## Check out the latest docs
 `<project-root>/decision-register`
 
 ## Tech Stack
