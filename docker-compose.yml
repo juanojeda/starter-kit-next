@@ -2,32 +2,20 @@ version: '3.8'
 
 services:
   dev-database:
-    image: postgres:15
+    image: postgres:15 # this aligns with Vercel's serverless Postgres version
     environment:
-      MYSQL_ROOT_PASSWORD: postgresRootPwd
-      MYSQL_DATABASE: <REPLACE WITH DATABASE NAME>
-      MYSQL_USER: default
-      MYSQL_PASSWORD: secret
+      #POSTGRES_ROOT_PASSWORD: secret
+      POSTGRES_DATABASE: <REPLACE WITH DATABASE NAME>
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
     ports:
-      - '3306:3306'
+      - '5432:5432'
     healthcheck:
-      test: [ "CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-proot' ]
+      test: ["CMD-SHELL", "pg_isready"]
       interval: 10s
+      timeout: 5s
       retries: 12
-  dev-database-sql:
-    image: mysql:8.0.32
-    environment:
-      MYSQL_ROOT_PASSWORD: mysqlRootPwd
-      MYSQL_DATABASE: <REPLACE WITH DATABASE NAME>
-      MYSQL_USER: default
-      MYSQL_PASSWORD: secret
-    ports:
-      - '3306:3306'
-    healthcheck:
-      test: [ "CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-proot' ]
-      interval: 10s
-      retries: 12
-
+  
   seed-dev-database:
     build:
       dockerfile: docker/dev-database/seedDatabase.Dockerfile
@@ -36,7 +24,7 @@ services:
     volumes:
       - "./prisma/:/db-setup/prisma/"
     environment:
-      DATABASE_URL: "mysql://root:mysqlRootPwd@dev-database:3306/my-test-app"
+      DATABASE_URL: "postgresql://postgres:secret@dev-database:5432/my-test-app"
     depends_on:
       dev-database:
           condition: service_healthy
