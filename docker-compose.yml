@@ -2,6 +2,19 @@ version: '3.8'
 
 services:
   dev-database:
+    image: postgres:15
+    environment:
+      MYSQL_ROOT_PASSWORD: postgresRootPwd
+      MYSQL_DATABASE: <REPLACE WITH DATABASE NAME>
+      MYSQL_USER: default
+      MYSQL_PASSWORD: secret
+    ports:
+      - '3306:3306'
+    healthcheck:
+      test: [ "CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-proot' ]
+      interval: 10s
+      retries: 12
+  dev-database-sql:
     image: mysql:8.0.32
     environment:
       MYSQL_ROOT_PASSWORD: mysqlRootPwd
