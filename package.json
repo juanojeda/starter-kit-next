@@ -12,7 +12,8 @@
     "startmb": "mb --configfile ./mountebank/exampleImposters.json --loglevel debug",
     "stopmb": "mb stop",
     "prepare": "husky install",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "db:setup": "prisma db push && prisma generate && prisma db seed"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"

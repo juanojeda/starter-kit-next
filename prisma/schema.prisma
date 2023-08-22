@@ -9,6 +9,7 @@ generator client {
 datasource db {
     provider = "mysql"
     url      = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
 model User {
@@ -28,6 +29,8 @@ model Post {
   title     String   @db.VarChar(255)
   author    User?    @relation(fields: [authorId], references: [id])
   authorId  Int?
+
+  @@index([authorId])
 }
 
 enum Role {
