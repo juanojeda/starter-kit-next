@@ -23,7 +23,7 @@ services:
     volumes:
       - "./prisma/:/db-setup/prisma/"
     environment:
-      DATABASE_URL: "mysql://root:mysqlRootPwd@dev-database:3306/seen-culture-app"
+      DATABASE_URL: "mysql://root:mysqlRootPwd@dev-database:3306/my-test-app"
     depends_on:
       dev-database:
           condition: service_healthy
