@@ -12,6 +12,6 @@ export const protectedExample = {
   }),
 }
 
-function service(userId: string) {
-  return `Hello ${userId} you can now see this secret message!`
+function service(userName: string | null | undefined) {
+  return `Hello ${userName} you can now see this secret message!`
 }
