@@ -3,6 +3,7 @@ import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
 import { Button } from "~/components/ui/button"
+import Typography from "~/components/ui/typography"
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -21,26 +22,26 @@ const Home: NextPage = () => {
         <meta name="description" content="Next Template app" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+      <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+          <Typography element="h1" as="h1">
             Hello world
-          </h1>
+          </Typography>
           <div className="flex h-20 flex-col items-center gap-2">
-            <p className="text-2xl text-white">
+            <Typography as="p" element="p">
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
-            <p className="text-2xl text-white">
+            </Typography>
+            <Typography as="p" element="p">
               {secret.isSuccess ? secret.data : ""}
-            </p>
-            <p className="text-2xl text-white">
+            </Typography>
+            <Typography as="p" element="p">
               {sessionData?.user
                 ? `Welcome ${sessionData.user.id}`
                 : "You are unauthenticated"}
-            </p>
-            <p className="text-2xl text-white">
+            </Typography>
+            <Typography as="p" element="p">
               {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
-            </p>
+            </Typography>
           </div>
           <Button onClick={handleButton}>Test mutate</Button>
         </div>
