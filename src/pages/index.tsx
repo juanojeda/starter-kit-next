@@ -5,6 +5,7 @@ import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
 import { Button, buttonVariants } from "~/components/ui/button"
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -46,7 +47,7 @@ const Home: NextPage = () => {
           </div>
           <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
             <Button className={buttonVariants({variant: "secondary"})
-            } onClick={handleButton}>Test mutate</Button>
+            } onClick={handleMutateButton}>Test mutate</Button>
           </div>
           <button
             type="button"
