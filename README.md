@@ -50,6 +50,20 @@ brew install nvm
 nvm install --lts
 ```
 
+* Local Development relies on a working Docker-compose setup
+```bash
+# As we don't have licenses for Docker Desktop (which is not the same as docker belowe), we recommend colima
+brew install colima docker docker-desktop
+```
+
+* Start Colima and the needed supporting docker containers (Postgres and seed-db installation)
+```bash
+# startup colima runtime - you can "stop" it when you want to free resources
+colima start
+# this ensures the seed DB container is built and reade
+docker-compose up --build
+```
+
 ### Accounts
 You will need to get access to the following accounts
 * Github repo - <git repot>
@@ -64,7 +78,8 @@ You will need to get access to the following accounts
 
 ### Local dev setup
 
-1. Copy environment variables and install dependencies
+1. Copy & configure environment variables and install dependencies
+    - *NOTE*: there are some required variables you will need to fill in.  Please check the copied Environment file for more information
 
 ```bash
 cp .env.example .env && npm install
