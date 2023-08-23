@@ -2,7 +2,7 @@ import { type NextPage } from "next"
 import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
-import Link from "next/link";
+import { Button } from "~/components/ui/button"
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
