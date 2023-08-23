@@ -14,13 +14,13 @@ test("Should throw error for unauthed users", async () => {
 test("Should return message for valid user", async () => {
   const VALID_SESSION: Session = {
     expires: new Date().toISOString(),
-    user: { id: "testUserId" },
+    user: { id: "testUserId", name: "Basil Brush", email: "basil@brush.com" },
   }
   const caller = createTRPCRouter({
     ...protectedExample,
   }).createCaller({ session: VALID_SESSION })
 
   expect(await caller.protectedExample()).toEqual(
-    "Hello testUserId you can now see this secret message!"
+    "Hello Basil Brush you can now see this secret message!"
   )
 })
