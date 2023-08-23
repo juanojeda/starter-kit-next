@@ -1,3 +1,7 @@
+// This component comes from an open and stale PR on the shadcn/ui repo
+// it doesn't seem like the contributors want to make this an official component.
+
+// https://github.com/shadcn-ui/ui/pull/363
 
 import * as React from "react";
 import { type VariantProps, cva } from "class-variance-authority";

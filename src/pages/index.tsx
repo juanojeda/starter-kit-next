@@ -1,3 +1,5 @@
+// This component comes from an open PR in the shadcn/ui repo. 
+
 import { type NextPage } from "next"
 import Head from "next/head"
 import { api } from "~/server/api"
