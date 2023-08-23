@@ -2,6 +2,7 @@ import { type NextPage } from "next"
 import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -9,7 +10,7 @@ const Home: NextPage = () => {
   const secret = api.protectedExample.useQuery()
   const mutationExample = api.mutationExample.useMutation()
 
-  const handleButton = () => {
+  const handleMutateButton = () => {
     mutationExample.mutate({ text: "mutate from tRPC" })
   }
 
@@ -34,7 +35,7 @@ const Home: NextPage = () => {
             </p>
             <p className="text-2xl text-white">
               {sessionData?.user
-                ? `Welcome ${sessionData.user.id}`
+                ? `Welcome ${sessionData.user.name} (${sessionData.user.email})`
                 : "You are unauthenticated"}
             </p>
             <p className="text-2xl text-white">
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
           </div>
           <button
             type="button"
-            onClick={handleButton}
+            onClick={handleMutateButton}
             className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold
             text-white shadow-sm hover:bg-indigo-400 focus-visible:outline
             focus-visible:outline-2 focus-visible:outline-offset-2
@@ -51,6 +52,16 @@ const Home: NextPage = () => {
           >
             Test mutate
           </button>
+          <Link 
+            href={`/api/auth/signin`}
+            className="text-white" >
+              Sign in with Google
+          </Link>          
+          <Link 
+            href={`/api/auth/signout`} 
+            className="text-white" >
+              Sign out
+          </Link>          
         </div>
       </main>
     </>
