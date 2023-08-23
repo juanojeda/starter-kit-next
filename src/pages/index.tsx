@@ -2,6 +2,7 @@ import { type NextPage } from "next"
 import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
+import { Button } from "~/components/ui/button"
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -41,16 +42,7 @@ const Home: NextPage = () => {
               {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
             </p>
           </div>
-          <button
-            type="button"
-            onClick={handleButton}
-            className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold
-            text-white shadow-sm hover:bg-indigo-400 focus-visible:outline
-            focus-visible:outline-2 focus-visible:outline-offset-2
-            focus-visible:outline-indigo-500"
-          >
-            Test mutate
-          </button>
+          <Button onClick={handleButton}>Test mutate</Button>
         </div>
       </main>
     </>
