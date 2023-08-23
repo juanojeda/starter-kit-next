@@ -4,8 +4,7 @@ import { type NextPage } from "next"
 import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
-import { Button } from "~/components/ui/button"
-import Typography from "~/components/ui/typography"
+import { Button, buttonVariants } from "~/components/ui/button"
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -26,26 +25,29 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <Typography element="h1" as="h1">
+          <h1>
             Hello world
-          </Typography>
+          </h1>
           <div className="flex h-20 flex-col items-center gap-2">
-            <Typography as="p" element="p">
+            <p>
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </Typography>
-            <Typography as="p" element="p">
+            </p>
+            <p>
               {secret.isSuccess ? secret.data : ""}
-            </Typography>
-            <Typography as="p" element="p">
+            </p>
+            <p>
               {sessionData?.user
                 ? `Welcome ${sessionData.user.id}`
                 : "You are unauthenticated"}
-            </Typography>
-            <Typography as="p" element="p">
+            </p>
+            <p>
               {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
-            </Typography>
+            </p>
           </div>
-          <Button onClick={handleButton}>Test mutate</Button>
+          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+            <Button className={buttonVariants({variant: "secondary"})
+            } onClick={handleButton}>Test mutate</Button>
+          </div>
         </div>
       </main>
     </>
