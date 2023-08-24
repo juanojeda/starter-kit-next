@@ -40,24 +40,26 @@ const Home: NextPage = () => {
                 ? `Welcome ${sessionData.user.name} (${sessionData.user.email})`
                 : "You are unauthenticated"}
             </p>
-            <p>
-              {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
-            </p>
-          </div>
-          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-            <Button className={buttonVariants({variant: "secondary"})
-            } onClick={handleMutateButton}>Test mutate</Button>
-          </div>
+            <div className="flex flex-row items-stretch justify-start w-full">
+              <Button className={buttonVariants({variant: "secondary"})
+              } onClick={handleMutateButton}>Test mutate</Button>
+                <div>
+                  {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
+                </div>
+            </div>            
           {
                     sessionData?.user ?
-                      <Button asChild className={buttonVariants({variant: "secondary"})} >
+                      // Example of styling a non-button element as a button. Using the asChild property will pass the button styles onto the child element
+                      // see https://www.radix-ui.com/primitives/docs/utilities/slot#usage
+                      <Button asChild  >  
                         <a href="/api/auth/signout">Sign out</a>
                       </Button>
                   : 
-                    <Button asChild className={buttonVariants({variant: "secondary"})} >
+                    <Button asChild >
                       <a href="/api/auth/signin">Sign in with Google</a>
                     </Button>
           }
+          </div>
         </div>
       </main>
     </>
