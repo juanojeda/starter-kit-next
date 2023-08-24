@@ -5,7 +5,6 @@ import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
 import { Button, buttonVariants } from "~/components/ui/button"
-import Link from "next/link";
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -49,26 +48,16 @@ const Home: NextPage = () => {
             <Button className={buttonVariants({variant: "secondary"})
             } onClick={handleMutateButton}>Test mutate</Button>
           </div>
-          <button
-            type="button"
-            onClick={handleMutateButton}
-            className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold
-            text-white shadow-sm hover:bg-indigo-400 focus-visible:outline
-            focus-visible:outline-2 focus-visible:outline-offset-2
-            focus-visible:outline-indigo-500"
-          >
-            Test mutate
-          </button>
-          <Link 
-            href={`/api/auth/signin`}
-            className="text-white" >
-              Sign in with Google
-          </Link>          
-          <Link 
-            href={`/api/auth/signout`} 
-            className="text-white" >
-              Sign out
-          </Link>          
+          {
+                    sessionData?.user ?
+                      <Button asChild className={buttonVariants({variant: "secondary"})} >
+                        <a href="/api/auth/signout">Sign out</a>
+                      </Button>
+                  : 
+                    <Button asChild className={buttonVariants({variant: "secondary"})} >
+                      <a href="/api/auth/signin">Sign in with Google</a>
+                    </Button>
+          }
         </div>
       </main>
     </>
