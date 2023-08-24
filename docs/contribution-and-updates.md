@@ -16,19 +16,19 @@ git push -u origin main # "main" might be "master" or something else on your git
 ```
 5. To be able to pull updates from the original repo, create a second upstream url:
 ```sh
-git remote add everest-upstream git@github.com:everest-engineering/starter-kit-next.git
+git remote add starter-kit-upstream git@github.com:everest-engineering/starter-kit-next.git
 ```
 
 ### Pulling updates from `everest-engineering/starter-kit-next`
 If there are changes in the main `everest/starter-kit-next` repo that you want to incorporate into your project, follow these steps:
 1. Fetch the latest updates from your remote sources `git remote update`
 2. Ensure you are on the `main` branch of your project
-3. Pull in the latest changes from `everest-upstream` onto your main branch `git pull everest-upstream main`
+3. Pull in the latest changes from `starter-kit-upstream` onto your main branch `git pull starter-kit-upstream main`
 4. (Optional): Rebase those changes onto your feature branch
 	1. Check out your feature branch
 	2. Rebase your feature branch onto the updated `main` branch: `git rebase main`.
 
 ### Contributing a PR to `everest-engineering/starter-kit-next`
 1. First, ensure your changes are on a branch
-2. When your branch is ready for PR, you can push your changes to the `everest-upstream` remote url: `git push -u everest-upstream <my-branch-name>`. This will create a branch in the `everest-engineering/starter-kit-next` repo.
+2. When your branch is ready for PR, you can push your changes to the `starter-kit-upstream` remote url: `git push -u starter-kit-upstream <my-branch-name>`. This will create a branch in the `everest-engineering/starter-kit-next` repo.
 3. You can then follow the normal steps to create a PR through the Github UI
