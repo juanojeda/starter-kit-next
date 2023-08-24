@@ -5,6 +5,7 @@ import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
 import { Button, buttonVariants } from "~/components/ui/button"
+import Link from "next/link"
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -52,11 +53,11 @@ const Home: NextPage = () => {
                       // Example of styling a non-button element as a button. Using the asChild property will pass the button styles onto the child element
                       // see https://www.radix-ui.com/primitives/docs/utilities/slot#usage
                       <Button asChild  >  
-                        <a href="/api/auth/signout">Sign out</a>
+                        <Link href="/api/auth/signout">Sign out</Link>
                       </Button>
                   : 
                     <Button asChild >
-                      <a href="/api/auth/signin">Sign in with Google</a>
+                      <Link href="/api/auth/signin">Sign in with Google</Link>
                     </Button>
           }
           </div>
