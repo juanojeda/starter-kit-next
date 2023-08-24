@@ -1,7 +1,10 @@
+// This component comes from an open PR in the shadcn/ui repo. 
+
 import { type NextPage } from "next"
 import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
+import { Button, buttonVariants } from "~/components/ui/button"
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -20,37 +23,31 @@ const Home: NextPage = () => {
         <meta name="description" content="Next Template app" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+      <main className="flex min-h-screen flex-col items-center justify-center">
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
+          <h1>
             Hello world
           </h1>
           <div className="flex h-20 flex-col items-center gap-2">
-            <p className="text-2xl text-white">
+            <p>
               {hello.data ? hello.data.greeting : "Loading tRPC query..."}
             </p>
-            <p className="text-2xl text-white">
+            <p>
               {secret.isSuccess ? secret.data : ""}
             </p>
-            <p className="text-2xl text-white">
+            <p>
               {sessionData?.user
                 ? `Welcome ${sessionData.user.id}`
                 : "You are unauthenticated"}
             </p>
-            <p className="text-2xl text-white">
+            <p>
               {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
             </p>
           </div>
-          <button
-            type="button"
-            onClick={handleButton}
-            className="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold
-            text-white shadow-sm hover:bg-indigo-400 focus-visible:outline
-            focus-visible:outline-2 focus-visible:outline-offset-2
-            focus-visible:outline-indigo-500"
-          >
-            Test mutate
-          </button>
+          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
+            <Button className={buttonVariants({variant: "secondary"})
+            } onClick={handleButton}>Test mutate</Button>
+          </div>
         </div>
       </main>
     </>
