@@ -23,7 +23,7 @@ git remote add starter-kit-upstream git@github.com:everest-engineering/starter-k
 If there are changes in the main `everest/starter-kit-next` repo that you want to incorporate into your project, follow these steps:
 1. Fetch the latest updates from your remote sources `git remote update`
 2. Ensure you are on the `main` branch of your project
-3. Rebase your changes with the latest updates from `starter-kit-upstream` onto your main branch `git rebase starter-kit-upstream/main`
+3. Rebase your changes with the latest updates from `starter-kit-upstream` (git remote alias) onto your main branch `git rebase starter-kit-upstream/main`
 4. (Optional): Rebase those changes onto your feature branch
 	1. Check out your feature branch
 	2. Rebase your feature branch onto the updated `main` branch: `git rebase main`.
