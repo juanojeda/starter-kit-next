@@ -65,12 +65,24 @@ You will need to get access to the following accounts
 ### Local dev setup
 
 1. Copy environment variables and install dependencies
-
 ```bash
 cp .env.example .env && npm install
-```
-   
-2. Start the application
+```  
+
+2. Create OAuth2 ClientId & Secret - This starter kit uses [NextAuth](https://next-auth.js.org/) and begins with built-in Google Authenthication:
+    - Go to [Google Cloud Console](https://console.cloud.google.com), *authenticating with your Everest Google account*
+    - Create a Project, if you don't have one already
+    - Navigate to `APIs & Services => Credentials`
+    - Click the `+ CREATE CREDENTIALS` button in the subnav
+    - Choose `OAuth2 Client ID`
+    - Application type: `Web application`
+    - Name: ..... #whatever you like
+    - Authorized JavaScript Origins: http://localhost:3000
+    - Authorized Redirect URIs: http://localhost:3000/api/auth/callback/google
+    - Copy the ClientID & Secret you receive, and place the values in `.env` file `GOOGLE_CLIENT_ID` & `GOOGLE_CLIENT_SECRET` properties
+
+
+3. Start the application
 ```npm run dev```
 
 ### Running tests
