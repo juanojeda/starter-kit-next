@@ -17,3 +17,8 @@ npx prisma studio
 ```
 
 See [their docs](https://www.prisma.io/studio) for more info.
+
+## FAQ
+
+#### **I get an error in Prisma Studio about the `DATABASE_URL` not being set?**
+Copy the `DATABASE_URL` var from the `.env.example` into your own `.env` file.
