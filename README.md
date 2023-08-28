@@ -96,11 +96,13 @@ cp .env.example .env && npm install
     - Create a Project, if you don't have one already
     - Navigate to `APIs & Services => Credentials`
     - Click the `+ CREATE CREDENTIALS` button in the subnav
+    - Consent Screen: You need to configure the Consent screen but you don't need to do anything other than accept the defaults.  Important for your customer, but not to get started
     - Choose `OAuth2 Client ID`
     - Application type: `Web application`
     - Name: ..... #whatever you like
     - Authorized JavaScript Origins: http://localhost:3000
     - Authorized Redirect URIs: http://localhost:3000/api/auth/callback/google
+    - User Type: Internal (only for initial testing purposes only)
     - Copy the ClientID & Secret you receive, and place the values in `.env` file `GOOGLE_CLIENT_ID` & `GOOGLE_CLIENT_SECRET` properties
 
 
