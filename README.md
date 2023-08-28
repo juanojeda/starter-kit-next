@@ -42,6 +42,12 @@ Refer to the respective docs for more information
 
 ## Getting Started
 
+### Pre-Prerequisites
+
+It is presumed for OSX development you have installed [Homebrew](https://brew.sh/).  If not, go there and get yourself setup.
+
+For Linux development, use the Homebrew package names listed below as references.  They'll likely be similarly named.
+
 ### Prerequisites
 
 * Install the latest LTS version of node
@@ -52,15 +58,16 @@ nvm install --lts
 
 * Local Development relies on a working Docker-compose setup
 ```bash
-# As we don't have licenses for Docker Desktop (which is not the same as docker belowe), we recommend colima
-brew install colima docker docker-desktop
+# As we don't have licenses for Docker Desktop (which is not the same as docker/docker-compose below), we recommend colima
+brew install colima docker docker-compose
 ```
 
 * Start Colima and the needed supporting docker containers (Postgres and seed-db installation)
 ```bash
 # startup colima runtime - you can "stop" it when you want to free resources
 colima start
-# this ensures the seed DB container is built and reade
+
+# this ensures the local seed DB container is built and updated
 docker-compose up --build
 ```
 
