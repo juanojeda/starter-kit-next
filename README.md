@@ -91,7 +91,7 @@ You will need to get access to the following accounts
 cp .env.example .env && npm install
 ```  
 
-2. Create OAuth2 ClientId & Secret - This starter kit uses [NextAuth](https://next-auth.js.org/) and begins with built-in Google Authenthication:
+2. [OPTIONAL] Create OAuth2 ClientId & Secret - This starter kit uses [NextAuth](https://next-auth.js.org/) and begins with built-in Google Authenthication.  :
     - Go to [Google Cloud Console](https://console.cloud.google.com), *authenticating with your Everest Google account*
     - Create a Project, if you don't have one already
     - Navigate to `APIs & Services => Credentials`

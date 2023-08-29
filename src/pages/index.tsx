@@ -12,6 +12,7 @@ const Home: NextPage = () => {
   const hello = api.queryExample.useQuery({ text: "from tRPC" })
   const secret = api.protectedExample.useQuery()
   const mutationExample = api.mutationExample.useMutation()
+  const googleAuthConfigured: boolean = hello.data ? hello.data.googleAuthenticationConfigured : false; 
 
   const handleMutateButton = () => {
     mutationExample.mutate({ text: "mutate from tRPC" })
@@ -48,7 +49,8 @@ const Home: NextPage = () => {
                   {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
                 </div>
             </div>            
-          {
+          { googleAuthConfigured ?
+           ( 
                     sessionData?.user ?
                       // Example of styling a non-button element as a button. Using the asChild property will pass the button styles onto the child element
                       // see https://www.radix-ui.com/primitives/docs/utilities/slot#usage
@@ -59,7 +61,11 @@ const Home: NextPage = () => {
                     <Button asChild >
                       <Link href="/api/auth/signin">Sign in with Google</Link>
                     </Button>
-          }
+           )
+            : (
+              <p>Google Authentication is not correctly configured.  Please check your .env file.</p>
+            )   
+          }        
           </div>
         </div>
       </main>
