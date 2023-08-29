@@ -5,6 +5,7 @@ import Head from "next/head"
 import { api } from "~/server/api"
 import { useSession } from "next-auth/react"
 import { Button, buttonVariants } from "~/components/ui/button"
+import Link from "next/link"
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
@@ -12,7 +13,7 @@ const Home: NextPage = () => {
   const secret = api.protectedExample.useQuery()
   const mutationExample = api.mutationExample.useMutation()
 
-  const handleButton = () => {
+  const handleMutateButton = () => {
     mutationExample.mutate({ text: "mutate from tRPC" })
   }
 
@@ -37,16 +38,28 @@ const Home: NextPage = () => {
             </p>
             <p>
               {sessionData?.user
-                ? `Welcome ${sessionData.user.id}`
+                ? `Welcome ${sessionData.user.name} (${sessionData.user.email})`
                 : "You are unauthenticated"}
             </p>
-            <p>
-              {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
-            </p>
-          </div>
-          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-            <Button className={buttonVariants({variant: "secondary"})
-            } onClick={handleButton}>Test mutate</Button>
+            <div className="flex flex-row items-stretch justify-start w-full">
+              <Button className={buttonVariants({variant: "secondary"})
+              } onClick={handleMutateButton}>Test mutate</Button>
+                <div>
+                  {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
+                </div>
+            </div>            
+          {
+                    sessionData?.user ?
+                      // Example of styling a non-button element as a button. Using the asChild property will pass the button styles onto the child element
+                      // see https://www.radix-ui.com/primitives/docs/utilities/slot#usage
+                      <Button asChild  >  
+                        <Link href="/api/auth/signout">Sign out</Link>
+                      </Button>
+                  : 
+                    <Button asChild >
+                      <Link href="/api/auth/signin">Sign in with Google</Link>
+                    </Button>
+          }
           </div>
         </div>
       </main>
