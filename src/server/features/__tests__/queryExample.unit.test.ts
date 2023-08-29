@@ -8,5 +8,5 @@ test("Should return message", async () => {
     session: null,
   })
 
-  expect(await caller.queryExample(input)).toEqual({ greeting: "Hello Ola" })
+  expect(await caller.queryExample(input)).toEqual({ greeting: "Hello Ola", googleAuthenticationConfigured: true, })
 })

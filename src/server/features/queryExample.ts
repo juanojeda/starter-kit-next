@@ -16,7 +16,10 @@ export const queryExample = {
 }
 
 function service(text: string) {
+  const googleAuthConfigured: boolean = process.env.GOOGLE_CLIENT_ID ? true : false;
+  
   return {
     greeting: `Hello ${text}`,
+    googleAuthenticationConfigured: googleAuthConfigured,
   }
 }
