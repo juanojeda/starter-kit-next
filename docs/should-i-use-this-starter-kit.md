@@ -18,7 +18,7 @@ If that sounds right up your alley, this could be a good fit for you! Read on to
 
 If your focus isn't for startups, or your priorities are in places other than delivering value, and delivering it quickly, you might find yourself opting out of some of your decisions. That's okay, and we've catered for this, however keep in mind that the more customisations you make, the less value you'll get from this kit.
 
-## Objectives & Principles
+## Objectives
 
 1. Reduce cognitive load
 2. Reduce spin-up time
