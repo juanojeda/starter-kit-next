@@ -62,9 +62,26 @@ It's easier for you to focus on building the customer's solution instead of choo
 - We aim to provide sensible configurations and defaults so that all developers have a unified experience, rather than facing "Works On My Machine" issues.
 
 #### What does success look like?
-- What you build locally works in production
+- What you build locally works in production.
 - What you're experiencing on your machine will be the same as what your teammate experiences on theirs.
 
 ## Tech Stack
+Our tech stack is listed below, with links to the reasons behind these decisions.
+
+- React (not optional) - component-driven UI library
+- [Next.js](../decision-register/tech-stack/2023-08-16-nextjs.md) (not optional) - React-focused full-stack development framework
+- [Typescript](../decision-register/tech-stack/2023-08-16-typescript.md) (strongly recommended) - type-safe programming language
+- [Tailwind](../decision-register/tech-stack/2023-08-16-tailwind.md) - Utility-based css framework
+- [ShadCN UI](../decision-register/tech-stack/2023-08-23-shadcn-ui.md) - UI component library
+- [TRPC](../decision-register/tech-stack/2023-08-16-trpc.md) - type-safe API endpoints and contracts
+- [Auth.js](../decision-register/tech-stack/2023-08-16-nextauth.md) (FKA NextAuth) - Authentication library
+- [Vercel](../decision-register/tech-stack/2023-08-16-vercel.md) - Low-config deployment platform
+- [NPM](../decision-register/tech-stack/2023-08-18-npm.md) - Javascript package manager
+- [Eslint](../decision-register/tech-stack/2023-08-16-eslint.md) - configurable rules for code consistency
+- [Prettier](../decision-register/tech-stack/2023-08-16-prettier.md) - configurable rules for code formatting
+- [Mountebank](../decision-register/tech-stack/2023-08-16-mountebank.md) - dependency mocking library
+- [Jest](../decision-register/tech-stack/2023-08-16-jest.md) - Testing framework
+- [Husky](../decision-register/tech-stack/2023-08-16-husky.md) - Git hook automation library
+- [Github Actions](../decision-register/tech-stack/2023-08-16-github-actions.md) - CI/CD and workflow automation configurations for Github
 
 ## Constraints & limitations
