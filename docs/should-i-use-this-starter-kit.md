@@ -68,9 +68,11 @@ It's easier for you to focus on building the customer's solution instead of choo
 ## Tech Stack
 Our tech stack is listed below, with links to the reasons behind these decisions.
 
+Apart from the few that are marked as "not optional", all of these tools can be easily removed or replaced with another solution. However, keep in mind that the more customisations you make, the less value you'll get from this kit.
+
 - React (not optional) - component-driven UI library
 - [Next.js](../decision-register/tech-stack/2023-08-16-nextjs.md) (not optional) - React-focused full-stack development framework
-- [Typescript](../decision-register/tech-stack/2023-08-16-typescript.md) (strongly recommended) - type-safe programming language
+- [Typescript](../decision-register/tech-stack/2023-08-16-typescript.md) (not optional) - type-safe programming language
 - [Tailwind](../decision-register/tech-stack/2023-08-16-tailwind.md) - Utility-based css framework
 - [ShadCN UI](../decision-register/tech-stack/2023-08-23-shadcn-ui.md) - UI component library
 - [TRPC](../decision-register/tech-stack/2023-08-16-trpc.md) - type-safe API endpoints and contracts
@@ -85,3 +87,29 @@ Our tech stack is listed below, with links to the reasons behind these decisions
 - [Github Actions](../decision-register/tech-stack/2023-08-16-github-actions.md) - CI/CD and workflow automation configurations for Github
 
 ## Constraints & limitations
+
+##### Built on React (not optional)
+If for some reason you are not able to use React in your project, this Starter Kit will not be for you. So many of the fundamental decisions made in this project rely on React, that it would be harder to replace React than to start with a different framework.
+
+##### Uses Next.js as its framework (not optional)
+If for some reason Next.js doesn't suit your project, this Starter Kit will not be for you. This project is designed within the Next.js ecosystem, so replacing Next.js would represent a significant effort.
+
+You might still be able to benefit from some copying from the rest of our decisions, however your mileage may vary.
+
+##### Built using Typescript
+If you're not able to proceed using Typescript as your language, this might not be the starter kit for you. Replacing Typescript with Javascript would be a non-trivial effort.
+
+If you like everything about this project apart from Typescript, here are some alternatives you could consider:
+- Write your own code as plain Javascript, but with a \*.ts / \*.tsx file extension. *If you do this, you might want to loosen the tsconfig.json rules to meet your needs.*
+- Write your own code in Javascript, and keep the Typescript we've written as-is
+- Write your own code in Javascript, and rewrite the Typescript we've written as Javascript, then remove the Typescript dependencies and related files.
+
+##### TRPC depends on Typescript
+If you decide to proceed with the project without using Typescript, you will lose access to TRPC, as it relies on Typescript. You will need to find another solution for your API design and endpoint contracts.
+
+##### Github Actions depends on having a Github Repo
+If your project is stored in a git provider other than Github (eg. Bitbucket, Gitlab, etc), you will lose access to Github actions. You will need to find another solution for automating your CI/CD workflows.
+
+##### Husky relies on git as your source control system
+If your project is using a source control system other than git (eg. Mercurial, SVN, TFS etc), you will lose access to Husky. If you need to hook into source control hooks, you'll need to find another solution.
+
