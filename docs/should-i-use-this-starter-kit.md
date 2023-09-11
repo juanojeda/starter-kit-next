@@ -74,7 +74,7 @@ Apart from the few that are marked as "not optional", all of these tools can be 
 - [Next.js](../decision-register/tech-stack/2023-08-16-nextjs.md) (not optional) - React-focused full-stack development framework
 - [Typescript](../decision-register/tech-stack/2023-08-16-typescript.md) (not optional) - type-safe programming language
 - [Tailwind](../decision-register/tech-stack/2023-08-16-tailwind.md) - Utility-based css framework
-- [ShadCN UI](../decision-register/tech-stack/2023-08-23-shadcn-ui.md) - UI component library
+- [ShadCN UI](../decision-register/tech-stack/2023-08-23-shadcn-ui.md) - UI component system
 - [TRPC](../decision-register/tech-stack/2023-08-16-trpc.md) - type-safe API endpoints and contracts
 - [Auth.js](../decision-register/tech-stack/2023-08-16-nextauth.md) (FKA NextAuth) - Authentication library
 - [Vercel](../decision-register/tech-stack/2023-08-16-vercel.md) - Low-config deployment platform
@@ -113,3 +113,5 @@ If your project is stored in a git provider other than Github (eg. Bitbucket, Gi
 #### Husky relies on git as your source control system
 If your project is using a source control system other than git (eg. Mercurial, SVN, TFS etc), you will lose access to Husky. If you need to hook into source control hooks, you'll need to find another solution.
 
+#### ShadCN relies on Tailwind
+If you aren't able to use Tailwind CSS in your project, you will lose access to the ShadCN UI component system.
