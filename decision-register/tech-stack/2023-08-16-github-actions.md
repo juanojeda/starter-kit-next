@@ -1,24 +1,21 @@
-# Decision record template by Michael Nygard
-
-This is the template in [Documenting architecture decisions - Michael Nygard](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions).
-You can use [adr-tools](https://github.com/npryce/adr-tools) for managing the ADR files.
-
-In each ADR file, write these sections:
-
-# Title
+# Github Actions for Automated CI/CD workflows
 
 ## Status
 
-What is the status, such as proposed, accepted, rejected, deprecated, superseded, etc.?
-
+Accepted
 ## Context
 
-What is the issue that we're seeing that is motivating this decision or change?
+- Rapid delivery of value requires that code can be deployed to production easily and quickly.
+- There are many options of CI/CD tools in the market, ranging in cost and ease of setup
+- Github Actions is a solution that integrates easily with Github
+- The majority of our projects at least start off in Github, and usually continue to live there for a long time
 
 ## Decision
 
-What is the change that we're proposing and/or doing?
+We will use Github Actions to create a CI/CD workflow and pipeline
 
 ## Consequences
 
-What becomes easier or more difficult to do because of this change?
+- Easy to implement in projects that already live in Github
+- If the project is not hosted in Github, the team will need to find another solution
+- At some point in the project's future, it might become more cost effective to migrate to dedicated CI/CD platform.
