@@ -1,12 +1,12 @@
 // This component comes from an open PR in the shadcn/ui repo. 
 
 import { type NextPage } from "next"
-import { type Prisma } from "@prisma/client"
 import Link from "next/link"
 import Head from "next/head"
 import { useSession } from "next-auth/react"
 import { api } from "~/server/api"
 import { Button, buttonVariants } from "~/components/ui/button"
+import { type ProtectedExampleReturnType } from "~/server/features/protectedExample"
 
 type DBSummaryData = {
   userCount: number;
@@ -14,18 +14,7 @@ type DBSummaryData = {
   postCount: number;
 }
 
-type AuthorisedUserData = {
-  user: Prisma.UserGetPayload<{
-    select: { id: true, name: true, email: true }
-  }>,
-  allPosts: Prisma.PostGetPayload<{
-    include: {
-      author: true
-    }
-  }>[]
-}
-
-const AuthorisedView = ({ user, allPosts }: AuthorisedUserData) => {
+const AuthorisedView = ({ user, allPosts }: ProtectedExampleReturnType) => {
   return (
     <>
       <div>
@@ -83,7 +72,7 @@ const Home: NextPage = () => {
 
             <h4>Database summary</h4>
             <div>{dbSummary.data ? formatDbSummaryData(dbSummary.data) : "Loading tRPC query..."}</div>
-            {secret.isSuccess ? <AuthorisedView {...secret.data} /> : null}
+            {secret.isSuccess && <AuthorisedView {...secret.data} />}
             <div className="flex flex-row items-stretch justify-start w-full">
               <Button className={buttonVariants({ variant: "secondary" })
               } onClick={handleMutateButton}>Test mutate</Button>

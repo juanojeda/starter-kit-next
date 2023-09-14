@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client"
+import { type Prisma, PrismaClient } from "@prisma/client"
 import { protectedProcedure } from "~/server/middleware/trpc"
 
 type User = {
@@ -44,3 +44,6 @@ async function service({ id }: User) {
     allPosts,
   }
 }
+export type ProtectedExampleReturnType = Prisma.PromiseReturnType<
+  typeof service
+>
