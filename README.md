@@ -95,8 +95,8 @@ cp .env.example .env && npm install
     - Go to [Google Cloud Console](https://console.cloud.google.com), *authenticating with your Everest Google account*
     - Create a Project, if you don't have one already
     - Navigate to `APIs & Services => Credentials`
-    - Click the `+ CREATE CREDENTIALS` button in the subnav
     - Consent Screen: You need to configure the Consent screen but you don't need to do anything other than accept the defaults.  Important for your customer, but not to get started
+    - Click the `+ CREATE CREDENTIALS` button in the subnav
     - Choose `OAuth2 Client ID`
     - Application type: `Web application`
     - Name: ..... #whatever you like
