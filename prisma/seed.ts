@@ -8,22 +8,34 @@ async function runSeeds() {
   const SEED_USER_UUID = "my-unique-user-uuid"
   const SEED_POST_UUID = "my-unique-post-uuid"
 
-  const seedUser = {
-    id: SEED_USER_UUID,
-    email: "seed.user@everest.engineering",
+  const seedUser1 = {
+    id: `${SEED_USER_UUID}1`,
+    email: "seed.user1@everest.engineering",
     name: "Seedy McSeedface",
+  }
+
+  const seedUser2 = {
+    id: `${SEED_USER_UUID}2`,
+    email: "seed.user2@everest.engineering",
+    name: "Seeden Seedgal",
   }
 
   const seedPost = {
     id: SEED_POST_UUID,
-    title: "Creatinga a seed post",
-    authorId: SEED_USER_UUID,
+    title: "Creating a a seed post",
+    authorId: seedUser1.id,
   }
 
   await prisma.user.upsert({
-    where: { id: seedUser.id },
-    create: seedUser,
-    update: seedUser,
+    where: { id: seedUser1.id },
+    create: seedUser1,
+    update: seedUser1,
+  })
+
+  await prisma.user.upsert({
+    where: { id: seedUser2.id },
+    create: seedUser2,
+    update: seedUser2,
   })
 
   await prisma.post.upsert({
