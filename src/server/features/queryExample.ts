@@ -29,8 +29,8 @@ async function service(text: string) {
     where: {
       posts: {
         some: {
-          author: {
-            isNot: null,
+          authorId: {
+            not: null,
           },
         },
       },
