@@ -38,6 +38,7 @@ async function service(text: string) {
   })
 
   return {
+    greeting: `Hello ${text}`,
     authorCount: countUsersWithPosts,
     postCount: countPosts,
     userCount: countUsers,

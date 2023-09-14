@@ -15,8 +15,14 @@ type DBSummaryData = {
 }
 
 type AuthorisedUserData = {
-  user: Prisma.UserSelect,
-  allPosts: Prisma.PostSelect[]
+  user: Prisma.UserGetPayload<{
+    select: { id: true, name: true, email: true }
+  }>,
+  allPosts: Prisma.PostGetPayload<{
+    include: {
+      author: true
+    }
+  }>[]
 }
 
 const AuthorisedView = ({ user, allPosts }: AuthorisedUserData) => {
@@ -25,12 +31,19 @@ const AuthorisedView = ({ user, allPosts }: AuthorisedUserData) => {
       <div>
         {
           user ? <p>Hello {user.name}, you have posts.</p> :
+            // eslint-disable-next-line react/no-unescaped-entities
             <div>You aren't currently a user in our database.</div>
         }
       </div>
       <div>
         <h4>Posts</h4>
-        {allPosts.map(({ title, author }) => (<div>{title} - {author.name}</div>))}
+        {
+          allPosts.map(
+            ({ title, author }) => (
+              <div key={title}>{title} - {author?.name}</div>
+            )
+          )
+        }
       </div>
     </>
   )
