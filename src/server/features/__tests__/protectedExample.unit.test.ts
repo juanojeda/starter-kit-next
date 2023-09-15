@@ -18,16 +18,19 @@ describe("protectedExample", () => {
   })
 
   test("Should return the user object from the db, and all posts from the db", async () => {
-    mockPrismaClient.mockImplementation(() => ({
-      user: {
-        findFirst: () => ({
-          id: "testUserId",
-        }),
-      },
-      post: {
-        findMany: () => [{ author: { name: "Basil Brush" } }],
-      },
-    }))
+    mockPrismaClient.mockImplementation(
+      () =>
+        ({
+          user: {
+            findFirst: () => ({
+              id: "testUserId",
+            }),
+          },
+          post: {
+            findMany: () => [{ author: { name: "Basil Brush" } }],
+          },
+        } as unknown as PrismaClient)
+    )
 
     const VALID_SESSION: Session = {
       expires: new Date().toISOString(),

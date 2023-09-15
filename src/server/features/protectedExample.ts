@@ -28,6 +28,7 @@ export const protectedExample = {
 
 async function service({ email }: User) {
   const prisma = new PrismaClient()
+
   const user = await prisma.user.findFirst({
     where: {
       email,

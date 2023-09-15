@@ -48,7 +48,7 @@ const Home: NextPage = () => {
   const googleAuthConfigured: boolean = dbSummary.data ? dbSummary.data.googleAuthenticationConfigured : false;
 
   const handleMutateButton = () => {
-    mutationExample.mutate({ text: "mutate from tRPC" })
+    mutationExample.mutate({ text: "Creating a test post" })
   }
 
   return (
@@ -76,9 +76,6 @@ const Home: NextPage = () => {
             <div className="flex flex-row items-stretch justify-start w-full">
               <Button className={buttonVariants({ variant: "secondary" })
               } onClick={handleMutateButton}>Test mutate</Button>
-              <div>
-                {mutationExample.isSuccess ? mutationExample.data.greeting : ""}
-              </div>
             </div>
             {googleAuthConfigured ?
               (
