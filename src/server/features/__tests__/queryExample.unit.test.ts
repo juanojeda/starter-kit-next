@@ -1,8 +1,25 @@
 import { test, expect } from "@jest/globals"
+import { PrismaClient } from "@prisma/client"
 import { queryExample } from "~/server/features/queryExample"
 import { createTRPCRouter } from "~/server/middleware/trpc"
 
+jest.mock("@prisma/client")
+
+const mockPrismaClient = PrismaClient as jest.Mock<PrismaClient>
+
 describe("queryExample", () => {
+  mockPrismaClient.mockImplementation(
+    () =>
+      ({
+        post: {
+          count: () => 1,
+        },
+        user: {
+          count: () => 1,
+        },
+      } as unknown as PrismaClient)
+  )
+
   test("Should return message", async () => {
     const input = { text: "Ola" }
     const caller = createTRPCRouter({ ...queryExample }).createCaller({
