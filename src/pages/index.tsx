@@ -1,5 +1,6 @@
 // This component comes from an open PR in the shadcn/ui repo. 
 
+import React from "react"
 import { type NextPage } from "next"
 import Link from "next/link"
 import Head from "next/head"
@@ -7,6 +8,7 @@ import { useSession } from "next-auth/react"
 import { api } from "~/server/api"
 import { Button, buttonVariants } from "~/components/ui/button"
 import { type ProtectedExampleReturnType } from "~/server/features/protectedExample"
+import { Input } from "~/components/ui/input"
 
 type DBSummaryData = {
   userCount: number;
@@ -28,8 +30,8 @@ const AuthorisedView = ({ user, allPosts }: ProtectedExampleReturnType) => {
         <h4>Posts</h4>
         {
           allPosts.map(
-            ({ title, author }) => (
-              <div key={title}>{title} - {author ? author.name : `anonymous`}</div>
+            ({ title, author, id }) => (
+              <div key={id}>{title} - {author ? author.name : `anonymous`}</div>
             )
           )
         }
@@ -42,14 +44,26 @@ const formatDbSummaryData = ({ userCount, postCount, authorCount }: DBSummaryDat
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
-  const dbSummary = api.queryExample.useQuery({ text: "from tRPC" })
-  const secret = api.protectedExample.useQuery()
+  const { refetch: refetchDbSummary, ...dbSummary } = api.queryExample.useQuery({ text: "from tRPC" })
+  const { refetch: refetchSecret, ...secret } = api.protectedExample.useQuery()
   const mutationExample = api.mutationExample.useMutation()
   const googleAuthConfigured: boolean = dbSummary.data ? dbSummary.data.googleAuthenticationConfigured : false;
 
-  const handleMutateButton = () => {
-    mutationExample.mutate({ text: "Creating a test post" })
+  const [postText, setPostText] = React.useState<string>("");
+
+  const handlePostTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPostText(e.target.value)
   }
+
+  const handleMutateButton = () => {
+    mutationExample.mutate({ text: postText })
+  }
+
+  React.useEffect(() => {
+    setPostText("");
+    void refetchDbSummary();
+    void refetchSecret();
+  }, [mutationExample.isSuccess, refetchSecret, refetchDbSummary])
 
   return (
     <>
@@ -67,15 +81,16 @@ const Home: NextPage = () => {
             <p>
               {sessionData?.user
                 ? `Welcome ${sessionData.user.name} (${sessionData.user.email})`
-                : "You are unauthenticated"}
+                : "You are unauthenticated. Sign in to see the posts."}
             </p>
 
             <h4>Database summary</h4>
             <div>{dbSummary.data ? formatDbSummaryData(dbSummary.data) : "Loading tRPC query..."}</div>
-            {secret.isSuccess && <AuthorisedView {...secret.data} />}
-            <div className="flex flex-row items-stretch justify-start w-full">
+            {secret.isSuccess && <AuthorisedView user={secret.data.user} allPosts={secret.data.allPosts} />}
+            <div className="flex w-full gap-1">
+              <Input onChange={handlePostTextChange} className="bg-card" type="text" placeholder="Write a post..." value={postText} />
               <Button className={buttonVariants({ variant: "secondary" })
-              } onClick={handleMutateButton}>Test mutate</Button>
+              } onClick={handleMutateButton}>Submit</Button>
             </div>
             {googleAuthConfigured ?
               (
