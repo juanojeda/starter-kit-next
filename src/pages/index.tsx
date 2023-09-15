@@ -19,7 +19,7 @@ const AuthorisedView = ({ user, allPosts }: ProtectedExampleReturnType) => {
     <>
       <div>
         {
-          user ? <p>Hello {user.name}, you have posts.</p> :
+          user ? <p>You have {user.posts.length} posts.</p> :
             // eslint-disable-next-line react/no-unescaped-entities
             <div>You aren't currently a user in our database.</div>
         }
@@ -29,7 +29,7 @@ const AuthorisedView = ({ user, allPosts }: ProtectedExampleReturnType) => {
         {
           allPosts.map(
             ({ title, author }) => (
-              <div key={title}>{title} - {author?.name}</div>
+              <div key={title}>{title} - {author ? author.name : `anonymous`}</div>
             )
           )
         }

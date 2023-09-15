@@ -26,11 +26,14 @@ export const protectedExample = {
   ),
 }
 
-async function service({ id }: User) {
+async function service({ email }: User) {
   const prisma = new PrismaClient()
   const user = await prisma.user.findFirst({
     where: {
-      id,
+      email,
+    },
+    include: {
+      posts: true,
     },
   })
   const allPosts = await prisma.post.findMany({
