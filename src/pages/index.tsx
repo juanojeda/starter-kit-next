@@ -29,7 +29,7 @@ const AuthorisedView = ({ user, allPosts }: ProtectedExampleReturnType) => {
       <div>
         <h4>Posts</h4>
         {
-          allPosts.map(
+          [...allPosts].reverse().map(
             ({ title, author, id }) => (
               <div key={id}>{title} - {author ? author.name : `anonymous`}</div>
             )
@@ -84,14 +84,7 @@ const Home: NextPage = () => {
                 : "You are unauthenticated. Sign in to see the posts."}
             </p>
 
-            <h4>Database summary</h4>
-            <div>{dbSummary.data ? formatDbSummaryData(dbSummary.data) : "Loading tRPC query..."}</div>
-            {secret.isSuccess && <AuthorisedView user={secret.data.user} allPosts={secret.data.allPosts} />}
-            <div className="flex w-full gap-1">
-              <Input onChange={handlePostTextChange} className="bg-card" type="text" placeholder="Write a post..." value={postText} />
-              <Button className={buttonVariants({ variant: "secondary" })
-              } onClick={handleMutateButton}>Submit</Button>
-            </div>
+
             {googleAuthConfigured ?
               (
                 sessionData?.user ?
@@ -109,6 +102,17 @@ const Home: NextPage = () => {
                 <p>Google Authentication is not correctly configured.  Please check your .env file.</p>
               )
             }
+
+            <h4>Database summary</h4>
+            <div>{dbSummary.data ? formatDbSummaryData(dbSummary.data) : "Loading tRPC query..."}</div>
+
+            <div className="flex w-full gap-1">
+              <Input onChange={handlePostTextChange} className="bg-card" type="text" placeholder="Write a post..." value={postText} />
+              <Button className={buttonVariants({ variant: "secondary" })
+              } onClick={handleMutateButton}>Submit</Button>
+            </div>
+
+            {secret.isSuccess && <AuthorisedView user={secret.data.user} allPosts={secret.data.allPosts} />}
           </div>
         </div>
       </main>
