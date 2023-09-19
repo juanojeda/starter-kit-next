@@ -1,19 +1,16 @@
-import { z } from "zod"
 import { publicProcedure } from "~/server/middleware/trpc"
 import prisma from "~/server/external/prisma"
 
 // The controller
 export const queryExample = {
-  queryExample: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(() => {
-      try {
-        return service()
-      } catch (err) {
-        console.log(err)
-        throw err
-      }
-    }),
+  queryExample: publicProcedure.query(() => {
+    try {
+      return service()
+    } catch (err) {
+      console.log(err)
+      throw err
+    }
+  }),
 }
 
 async function service() {

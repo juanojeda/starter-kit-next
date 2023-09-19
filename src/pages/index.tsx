@@ -44,7 +44,7 @@ const formatDbSummaryData = ({ userCount, postCount, authorCount }: DBSummaryDat
 
 const Home: NextPage = () => {
   const { data: sessionData } = useSession()
-  const { refetch: refetchDbSummary, ...dbSummary } = api.queryExample.useQuery({ text: "from tRPC" })
+  const { refetch: refetchDbSummary, ...dbSummary } = api.queryExample.useQuery()
   const { refetch: refetchSecret, ...secret } = api.protectedExample.useQuery()
   const mutationExample = api.mutationExample.useMutation()
   const googleAuthConfigured: boolean = dbSummary.data ? dbSummary.data.googleAuthenticationConfigured : false;

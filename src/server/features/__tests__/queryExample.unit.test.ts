@@ -18,12 +18,11 @@ describe("queryExample", () => {
     prismaMock.user.count.calledWith(undefined).mockResolvedValue(mockUserCount)
     prismaMock.post.count.mockResolvedValue(mockPostCount)
 
-    const input = { text: "Ola" }
     const caller = createTRPCRouter({ ...queryExample }).createCaller({
       session: null,
     })
 
-    expect(await caller.queryExample(input)).toEqual(
+    expect(await caller.queryExample()).toEqual(
       expect.objectContaining({
         googleAuthenticationConfigured: true,
         userCount: 1,
