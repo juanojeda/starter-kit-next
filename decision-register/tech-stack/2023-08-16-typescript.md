@@ -1,7 +1,9 @@
 # Writing in Typescript
 
 ## Status
+
 Accepted
+
 ## Context
 
 - We are building a starter kit for startups, with the assumption that we will be building web-based solutions
@@ -13,5 +15,6 @@ Accepted
 We will write our code in Typescript
 
 ## Consequences
+
 - We will have Type Safety in our code
 - Engineers who don't know Typescript may need to brush up on this

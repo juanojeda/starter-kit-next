@@ -20,4 +20,5 @@ As per the docs, some components will also require that you modify the `tailwind
 In order to get you started, we've included one component.
 
 ### `Button`
+
 See [the official docs](https://ui.shadcn.com/docs/components/button).

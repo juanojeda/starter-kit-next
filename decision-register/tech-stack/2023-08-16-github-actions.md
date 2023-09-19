@@ -3,6 +3,7 @@
 ## Status
 
 Accepted
+
 ## Context
 
 - Rapid delivery of value requires that code can be deployed to production easily and quickly.

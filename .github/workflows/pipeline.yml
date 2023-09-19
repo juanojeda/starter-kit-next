@@ -1,9 +1,9 @@
- name: Build web application
+name: Build web application
 
- on: push
- concurrency: ci_pipeline
+on: push
+concurrency: ci_pipeline
 
- jobs:
+jobs:
   test-build-deploy-project:
     name: Webapp
     runs-on: ubuntu-latest
@@ -23,7 +23,6 @@
         run: npm run unit:test
         env:
           NODE_ENV: test
-
 #      - name: Run integration tests
 #        run: npm run integration:test
 #        env:

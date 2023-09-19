@@ -6,7 +6,8 @@ Accepted
 
 ## Context
 
- modern apps often depend on third party services for enhanced functionality. This creates problems when testing your application as you need it to connect to the third party service to run the full app and many third parties do not provide a solution for you.
+modern apps often depend on third party services for enhanced functionality. This creates problems when testing your application as you need it to connect to the third party service to run the full app and many third parties do not provide a solution for you.
+
 ## Decision
 
 - We will use Mountebank in the developer environment in order to mock third party services

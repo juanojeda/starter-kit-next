@@ -1,4 +1,4 @@
-await import("./src/env.mjs");
+await import("./src/env.mjs")
 
 /** @type {import("next").NextConfig} */
 const config = {
@@ -8,5 +8,5 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-};
-export default config;
+}
+export default config
