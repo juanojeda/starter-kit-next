@@ -13,7 +13,9 @@
     "stopmb": "mb stop",
     "prepare": "husky install",
     "postinstall": "prisma generate",
-    "db:setup": "prisma db push && prisma generate && prisma db seed"
+    "db:setup": "prisma db push && prisma generate && prisma db seed",
+    "prettier:check": "prettier ./ --check",
+    "prettier:fix": "prettier ./ --write"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
