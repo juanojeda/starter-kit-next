@@ -16,7 +16,7 @@ describe("protectedExample", () => {
       image: null,
     })
 
-    prismaMock.post.findMany.mockResolvedValue([
+    const mockedPosts = [
       {
         id: "postId",
         createdAt: new Date(),
@@ -34,7 +34,9 @@ describe("protectedExample", () => {
           role: "USER",
         },
       },
-    ])
+    ]
+
+    prismaMock.post.findMany.mockResolvedValue(mockedPosts)
 
     const caller = createTRPCRouter({
       ...protectedExample,
