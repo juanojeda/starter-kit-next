@@ -1,7 +1,8 @@
-import { type Prisma, PrismaClient } from "@prisma/client"
+import { type Prisma } from "@prisma/client"
 import { type Session } from "next-auth"
 import { z } from "zod"
 import { publicProcedure } from "~/server/middleware/trpc"
+import prisma from "~/server/external/prisma"
 
 // This is the controller
 export const mutationExample = {
@@ -23,8 +24,6 @@ type MutationArgs = {
 }
 
 async function service({ text, ctx }: MutationArgs) {
-  const prisma = new PrismaClient()
-
   const data: Prisma.PostCreateInput = {
     title: text,
   }

@@ -1,10 +1,7 @@
-import { test, expect } from "@jest/globals"
 import { prismaMock } from "~/server/external/__mocks__/prisma"
 import { queryExample } from "~/server/features/queryExample"
 import { createTRPCRouter } from "~/server/middleware/trpc"
 import { anyObject } from "jest-mock-extended"
-
-jest.mock("~/server/external/prisma")
 
 describe("queryExample", () => {
   test("Should return message", async () => {
