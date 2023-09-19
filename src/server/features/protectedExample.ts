@@ -1,5 +1,6 @@
-import { type Prisma, PrismaClient } from "@prisma/client"
+import { type Prisma } from "@prisma/client"
 import { protectedProcedure } from "~/server/middleware/trpc"
+import prisma from "../external/prisma"
 
 type User = {
   email: string
@@ -27,8 +28,6 @@ export const protectedExample = {
 }
 
 async function service({ email }: User) {
-  const prisma = new PrismaClient()
-
   const user = await prisma.user.findFirst({
     where: {
       email,
