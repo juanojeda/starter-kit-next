@@ -1,14 +1,14 @@
 import { z } from "zod"
 import { publicProcedure } from "~/server/middleware/trpc"
-import { PrismaClient } from "@prisma/client"
+import prisma from "~/server/external/prisma"
 
 // The controller
 export const queryExample = {
   queryExample: publicProcedure
     .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
+    .query(() => {
       try {
-        return service(input.text)
+        return service()
       } catch (err) {
         console.log(err)
         throw err
@@ -16,12 +16,10 @@ export const queryExample = {
     }),
 }
 
-async function service(text: string) {
+async function service() {
   const googleAuthConfigured: boolean = process.env.GOOGLE_CLIENT_ID
     ? true
     : false
-
-  const prisma = new PrismaClient()
 
   const countPosts = await prisma.post.count()
   const countUsers = await prisma.user.count()
@@ -38,7 +36,6 @@ async function service(text: string) {
   })
 
   return {
-    greeting: `Hello ${text}`,
     authorCount: countUsersWithPosts,
     postCount: countPosts,
     userCount: countUsers,

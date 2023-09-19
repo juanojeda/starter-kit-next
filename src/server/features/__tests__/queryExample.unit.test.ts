@@ -1,26 +1,23 @@
 import { test, expect } from "@jest/globals"
-import { PrismaClient } from "@prisma/client"
+import { prismaMock } from "~/server/external/__mocks__/prisma"
 import { queryExample } from "~/server/features/queryExample"
 import { createTRPCRouter } from "~/server/middleware/trpc"
+import { anyObject } from "jest-mock-extended"
 
-jest.mock("@prisma/client")
-
-const mockPrismaClient = PrismaClient as jest.Mock<PrismaClient>
+jest.mock("~/server/external/prisma")
 
 describe("queryExample", () => {
-  mockPrismaClient.mockImplementation(
-    () =>
-      ({
-        post: {
-          count: () => 1,
-        },
-        user: {
-          count: () => 1,
-        },
-      } as unknown as PrismaClient)
-  )
-
   test("Should return message", async () => {
+    const mockUserCount = 1
+    const mockPostCount = 2
+    const mockAuthorCount = 3
+
+    prismaMock.user.count
+      .calledWith(anyObject())
+      .mockResolvedValue(mockAuthorCount)
+    prismaMock.user.count.calledWith(undefined).mockResolvedValue(mockUserCount)
+    prismaMock.post.count.mockResolvedValue(mockPostCount)
+
     const input = { text: "Ola" }
     const caller = createTRPCRouter({ ...queryExample }).createCaller({
       session: null,
@@ -28,11 +25,10 @@ describe("queryExample", () => {
 
     expect(await caller.queryExample(input)).toEqual(
       expect.objectContaining({
-        greeting: "Hello Ola",
         googleAuthenticationConfigured: true,
-        userCount: expect.any(Number),
-        postCount: expect.any(Number),
-        authorCount: expect.any(Number),
+        userCount: 1,
+        postCount: 2,
+        authorCount: 3,
       })
     )
   })
