@@ -1,11 +1,13 @@
 # Getting started with this Starter Kit
+
 1. Clone the repo to your machine, and navigate to that folder
 2. Delete the `.git` folder
 3. Initialise a new git project: `git init`
 4. Add the files, and make your first commit: `git add --all && git commit -m "cloned from Everest starter-kit-next"`
 5. Go to your github account and create a new repo, following the instructions for "Push an existing repository".
+
 ```sh
-git remote add origin git@github.com:<your-username/your-repo> # replace this with your own 
+git remote add origin git@github.com:<your-username/your-repo> # replace this with your own
 git push -u origin main # "main" might be "master" or something else on your github account
 ```
 

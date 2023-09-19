@@ -6,7 +6,8 @@ Accepted
 
 ## Context
 
-When considering a starter kit for start up projects, we looked at a few off the shelf options: 
+When considering a starter kit for start up projects, we looked at a few off the shelf options:
+
 - [Epic Stack](https://github.com/epicweb-dev/epic-stack)
 - [Create T3 App](https://create.t3.gg)
 - [Next.js Enterprise Boilerplate](https://next-enterprise.vercel.app)
@@ -31,7 +32,7 @@ We will create our own starter kit (based off Create T3 App)
 
 - Main issue is with the code structure they use.
 - The authors don't really believe in tests so have not given much consideration to that.
-- It still leaves a lot for you to do. It is a great starting point and makes sense that it does not include more as they are serving a very large generic audience but I think for our audience we can be a bit more opinionated e.g with a deployment pipeline provided and auth config  etc. So devs can really hit the ground running.
+- It still leaves a lot for you to do. It is a great starting point and makes sense that it does not include more as they are serving a very large generic audience but I think for our audience we can be a bit more opinionated e.g with a deployment pipeline provided and auth config etc. So devs can really hit the ground running.
 
 ### Next.js Enterprise Boilerplate
 
