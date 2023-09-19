@@ -17,6 +17,7 @@ const jestConfig = {
     prefix: "<rootDir>/",
   }),
   modulePaths: ["<rootDir>"],
+  setupFilesAfterEnv: ["<rootDir>/src/server/external/__mocks__/prisma.ts"],
 }
 
 export default createJestConfig(jestConfig)
