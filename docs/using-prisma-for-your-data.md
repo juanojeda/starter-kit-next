@@ -49,7 +49,12 @@ This approach is good when:
 - You want to track the history of your data changes (eg. you're trying to maintain consistency between environments with existing data)
 
 How to follow this strategy:
-// fill this in
+- If this is your first time using migrations, run `npx prisma migrate dev --name init`. This will create a database table for your migration history, and create a SQL migration script creating your schema.
+- When you make changes to your schema, run `npx prisma migrate dev --name [your-new-feature]`. It's best practice to keep the migrations small, to prevent risk of data corruption.
+
+Note: `prisma migrate dev` is a development command and should never be used in a production environment.
+
+For more information on using migrations, see the [Prisma docs](https://www.prisma.io/docs/concepts/components/prisma-migrate).
 
 ## FAQ
 
