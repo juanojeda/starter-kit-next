@@ -20,6 +20,37 @@ npx prisma studio
 
 See [their docs](https://www.prisma.io/studio) for more info.
 
+## To migrate or not to migrate?
+Throughout the development cycle, you'll probably be making a lot of changes to your database structure, models and schema, while you prototype what works for your needs.
+
+When you modify your schema, any existing data may need to be modified or recreated, in order to match the new schema. If you don't do this, you will end up with inconsistent data, and/or broken experiences.
+
+There are a couple of strategies that you can take in this situation.
+
+### Wipe the DB and repopulate
+This approach involves clearing your database, or the affected portion, and repopulating it with new data.
+
+This approach is good when:
+- You're making lots of frequent changes to your database schema (eg. you're prototyping the structure in a local dev environment)
+- You aren't worried about the data that you will lose (eg. if it's dev data, rather than customer data)
+- You are confident that you can recreate the data you need
+- The history of the data changes aren't important (eg. you aren't trying to keep multiple environments consistent)
+
+How to follow this strategy:
+- When you have made changes to your DB schema, you will need to wipe your existing data and propagate those changes. Run `npm run db:__reset` (we have used the `__reset` naming to make it harder to do this accidentally).
+- Ensure that your seed scripts conform to the new schema changes
+- When you want to reseed your database, run `npm run db:seed`
+
+### Create a data migration
+This approach involves programmatically taking your data from the old schema to the new schema, using a migration script.
+
+This approach is good when:
+- You need to prevent any data loss (eg. if you're dealing with customer data, or data in a production environment)
+- You want to track the history of your data changes (eg. you're trying to maintain consistency between environments with existing data)
+
+How to follow this strategy:
+// fill this in
+
 ## FAQ
 
 #### **I get an error in Prisma Studio about the `DATABASE_URL` not being set?**
