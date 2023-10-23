@@ -20,14 +20,16 @@ npx prisma studio
 
 See [their docs](https://www.prisma.io/studio) for more info.
 
-## To migrate or not to migrate?
+## How to develop your data structure (aka. To migrate or not to migrate?)
 Throughout the development cycle, you'll probably be making a lot of changes to your database structure, models and schema, while you prototype what works for your needs.
 
 When you modify your schema, any existing data may need to be modified or recreated, in order to match the new schema. If you don't do this, you will end up with inconsistent data, and/or broken experiences.
 
 There are a couple of strategies that you can take in this situation.
 
-### Wipe the DB and repopulate
+*Note: At this point, it's worth mentioning that throughout the lifecycle of your product, you will likely use both of these strategies, and potentially even move back and forth, depending on your data needs. Let the product's needs guide you when choosing the strategy to follow.*
+
+### 1. Wipe the DB and repopulate
 This approach involves clearing your database, or the affected portion, and repopulating it with new data.
 
 This approach is good when:
@@ -41,7 +43,7 @@ How to follow this strategy:
 - Ensure that your seed scripts conform to the new schema changes
 - When you want to reseed your database, run `npm run db:seed`
 
-### Create a data migration
+### 2. Create a data migration
 This approach involves programmatically taking your data from the old schema to the new schema, using a migration script.
 
 This approach is good when:
