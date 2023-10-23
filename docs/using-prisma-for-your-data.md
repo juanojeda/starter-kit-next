@@ -27,7 +27,14 @@ When you modify your schema, any existing data may need to be modified or recrea
 
 There are a couple of strategies that you can take in this situation.
 
-*Note: At this point, it's worth mentioning that throughout the lifecycle of your product, you will likely use both of these strategies, and potentially even move back and forth, depending on your data needs. Let the product's needs guide you when choosing the strategy to follow.*
+#### Aside - How do these strategies work with my product's stage of life?
+At this point, it's worth mentioning that throughout the lifecycle of your product, you will likely use both of these strategies, and potentially even move back and forth, depending on your data needs.
+
+For instance, in the early stages of your product's life, you might not have any customers and you may be rapidly changing your data structure to fit the evolving needs. In this case, strategy 1 may suit better. Likewise if you're building a new, unrelated data structure without any real use cases - this might be a good time to use strategy 1.
+
+When you do eventually release your product or component into real customers' hands, you'll probably care more about maintaining data consistency and portability. This is where strategy 2 will help.
+
+Let the product's needs guide you when choosing the strategy to follow.
 
 ### 1. Wipe the DB and repopulate
 This approach involves clearing your database, or the affected portion, and repopulating it with new data.
